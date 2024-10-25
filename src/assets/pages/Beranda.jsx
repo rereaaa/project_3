@@ -3,7 +3,7 @@ import axios from "axios";
 import BerandaView from "./BerandaView";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setNowPlaying, setPopular, setTopRated, setUpComing } from "../../store/filmSlice";
+import { setNowPlaying, setPopular, setTopRated, setUpComing, setFilmDetails, setUserRating } from "../../store/filmSlice";
 
 const nilaiDefault = {
   data: [],
