@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilmDetails, setUserRating } from "../../store/filmSlice";
+import { addRatedFilm } from "../../store/ratedFilmsSlice"; // Import new action
 
 const Detail = () => {
   const { id } = useParams();
@@ -21,7 +22,6 @@ const Detail = () => {
             },
           }
         );
-        console.log("Fetched film details:", response.data); // For debugging
         dispatch(setFilmDetails(response.data));
       } catch (error) {
         console.error("Error fetching film details:", error);
@@ -43,6 +43,7 @@ const Detail = () => {
         }
       );
       dispatch(setUserRating(ratingValue));
+      dispatch(addRatedFilm({ ...filmDetails, userRating: ratingValue })); // Add film to ratedFilms
     } catch (error) {
       console.error("Error posting rating:", error);
     }
@@ -76,6 +77,7 @@ const Detail = () => {
       <p className="text-md mb-4">
         <strong>Rating:</strong> {filmDetails.vote_average}
       </p>
+
       <div className="rating mb-4">
         <p className="px-2">
           <strong>Your Rate: </strong>
