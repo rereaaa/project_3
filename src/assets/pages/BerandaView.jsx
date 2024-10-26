@@ -124,7 +124,7 @@ const BerandaView = ({ ubahCari, hasilFilter }) => {
         </div>
 
         {/* Popular Movies */}
-        <h2 className="text-center text-2xl font-bold">Popular Movies</h2>
+        <a className="text-center text-2xl font-bold" href={`/Popular/`}>Popular Movies</a>
         <div className="flex overflow-x-scroll space-x-4">
           {popularFilms.map((film) => (
             <div key={film.id} className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl">

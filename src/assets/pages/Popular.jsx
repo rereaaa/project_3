@@ -13,7 +13,7 @@ const Popular = () => {
         "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
         {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTI5OTcxNy4wODk4NDYsInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xZZ19MsdjSOloDzdKFgNnUDtKGvRJSpdreT5uzFihB4`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTg5OTc2MC4yOTQ0MzksInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RbYHHzFgC-tgQALfqAkESS5m0NPymJJHu3Kc_xyLf5c`,
           },
         }
       );
@@ -25,9 +25,9 @@ const Popular = () => {
 
   return (
     <div className="popular  dark:bg-slate-950 dark:text-white">
-      <div className="relative">
+      <div className="carousel-item relative w-[auto] h-[300px]">
         <img
-          src="https://i.pinimg.com/564x/cc/e6/9b/cce69b4e6015ba6352b9479ee8e37520.jpg"
+          src="https://i.pinimg.com/736x/2e/d7/4b/2ed74be20e244994bccf5f531fdfd3fe.jpg"
           className="w-full h-auto"
         />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -36,7 +36,7 @@ const Popular = () => {
       </div>
       <div className="grid grid-cols-3">
       {popularFilms.map((film) => (
-            <div key={film.id} className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl">
+            <div key={film.id} className="card bg-whitesmoke dark:bg-slate-750 dark:text-white w-96 shadow-xl">
               <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} alt={film.title} className="max-w-sm rounded-lg shadow-2xl" />
               <div className="p-4">
                 <a className="text-xl font-semibold" href={`/Detail/${film.id}`}>{film.title}</a>

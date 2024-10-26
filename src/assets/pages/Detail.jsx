@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,7 +54,7 @@ const Detail = () => {
   const genreNames = filmDetails.genres.map((genre) => genre.name).join(", ");
 
   return (
-    <div className="container mx-auto p-4 dark:bg-black">
+    <div className="container mx-auto p-4 dark:bg-slate-950 dark:text-white">
       <div className="text-center mb-4">
         <img
           src={`https://image.tmdb.org/t/p/original/${filmDetails.poster_path}`}

@@ -34,7 +34,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar dark:bg-slate-950">
+    <div className="navbar dark:bg-slate-950 w-full">
       <div className="navbar dark:bg-slate-950 dark:text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -62,25 +62,25 @@ const Navbar = () => {
                 <Link to="/">Beranda</Link>
               </li>
               <li>
-                <a>Categori</a>
+                <a>Categories</a>
                 <ul className="p-2">
                   <li>
                     <Link to="/Popular">Popular</Link>
                   </li>
                   <li>
-                    <Link to="/">Now Playing</Link>
+                    <Link to="/NowPlaying">Now Playing</Link>
                   </li>
                   <li>
                     <Link to="/Upcoming">Up Coming</Link>
                   </li>
                   <li>
-                    <Link to="/">Top Rated</Link>
+                    <Link to="/TopRated">Top Rated</Link>
                   </li>
                 </ul>
-                </li>
+              </li>
               <li>
-                  <Link to={"/RatedFilms"}>Rated Films</Link>
-                </li>
+                <Link to={"/RatedFilms"}>Rated Films</Link>
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost text-xl text-center">tonton xv</a>
@@ -91,27 +91,28 @@ const Navbar = () => {
               <Link to={"/"}>Beranda</Link>
             </li>
             <li>
-                <div className="dropdown dropdown-hover">
+              <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className="btn m-1">
-                Categori
-            </div>
-                <ul 
-                tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  Categories
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow dark:bg-slate-950 dark:text-white"
+                >
                   <li>
-                    <button to="/Popular">Popular</button>
+                    <a to="/Popular">Popular</a>
                   </li>
                   <li>
-                    <Link to="/">Now Playing</Link>
+                    <Link to="/NowPlaying">Now Playing</Link>
                   </li>
                   <li>
                     <Link to="/Upcoming">Up Coming</Link>
                   </li>
                   <li>
-                    <Link to="/">Top Rated</Link>
+                    <Link to="/TopRated">Top Rated</Link>
                   </li>
                 </ul>
-                </div>
+              </div>
             </li>
             <li>
               <Link to={"/RatedFilms"}>Rated Films</Link>
