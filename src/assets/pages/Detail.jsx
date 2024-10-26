@@ -1,4 +1,3 @@
-// Detail.js
 import { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -8,27 +7,28 @@ import { setFilmDetails, setUserRating } from "../../store/filmSlice";
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const filmDetails = useSelector((state) => state.film.filmDetails);
-  const userRating = useSelector((state) => state.film.userRating);
+  const filmDetails = useSelector((state) => state.films.filmDetails);
+  const userRating = useSelector((state) => state.films.userRating);
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+          `https://api.themoviedb.org/3/movie/${id}?page=1`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTI5OTcxNy4wODk4NDYsInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xZZ19MsdjSOloDzdKFgNnUDtKGvRJSpdreT5uzFihB4`,
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTg5OTc2MC4yOTQ0MzksInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RbYHHzFgC-tgQALfqAkESS5m0NPymJJHu3Kc_xyLf5c`,
             },
           }
         );
+        console.log("Fetched film details:", response.data); // For debugging
         dispatch(setFilmDetails(response.data));
       } catch (error) {
         console.error("Error fetching film details:", error);
       }
     };
 
-    fetchFilmDetails();
+    if (id) fetchFilmDetails();
   }, [id, dispatch]);
 
   const postRating = async (ratingValue) => {
@@ -38,7 +38,7 @@ const Detail = () => {
         { value: ratingValue },
         {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTI5OTcxNy4wODk4NDYsInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xZZ19MsdjSOloDzdKFgNnUDtKGvRJSpdreT5uzFihB4`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDE3ZDZlMDgxYzI4MzBlYjYyMGU1NWRlOWYzZWViOCIsIm5iZiI6MTcyOTg5OTc2MC4yOTQ0MzksInN1YiI6IjY3MDQ4MzAyNTQ1NGI4NjIzMzY5YjU2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RbYHHzFgC-tgQALfqAkESS5m0NPymJJHu3Kc_xyLf5c`,
           },
         }
       );
@@ -58,10 +58,10 @@ const Detail = () => {
         <img
           src={`https://image.tmdb.org/t/p/original/${filmDetails.poster_path}`}
           alt={filmDetails.title}
-          className="w-48 h-48 mx-auto rounded-md object-cover"
+          className="w-48 h-98 mx-auto rounded-md object-cover"
         />
       </div>
-      <h1 className="font-bebas text-3xl text-center mb-2">
+      <h1 className="font-bold text-3xl text-center mb-2">
         {filmDetails.title}
       </h1>
       <p className="text-md mb-2">

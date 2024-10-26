@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,15 +67,15 @@ const BerandaView = ({ ubahCari, hasilFilter }) => {
   }, [dispatch]);
 
   return (
-    <div className="beranda dark:bg-slate-950 dark:text-white">
+    <div className="beranda dark:bg-slate-950 dark:text-white full-container">
        <div id="New" className="carousel-item relative w-[auto] h-[300px]">
         <img
           src="https://i.pinimg.com/474x/6a/85/a4/6a85a43599ae1ae511c04a19fde79840.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between ">
           <h1 className="text-5xl font-bold text-white">WELCOME</h1>
-          <label className="input input-bordered text-blue-500 flex items-center gap-2 my-4 w-full max-w-md">
+          <label className="input input-bordered text-purple-750 flex items-center gap-2 my-4 w-full max-w-md  dark:bg-slate-950 dark:text-white">
             <input
               type="text"
               className="w-full p-2 rounded-md"
@@ -101,7 +101,7 @@ const BerandaView = ({ ubahCari, hasilFilter }) => {
         <h2 className="text-left text-2xl font-bold">Search result :</h2>
         <div className="flex overflow-x-scroll space-x-4">
           {hasilFilter?.map((film) => (
-            <div key={film.id} className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl" href={`/Detail/${film.id}`}>
+            <div key={film.id} className="card bg-whitesmoke dark:bg-slate-650 dark:text-white w-96 shadow-xl" href={`/Detail/${film.id}`}>
               <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} alt={film.title} className="max-w-sm rounded-lg shadow-xl" />
               <div className="p-4">
                 <a className="text-xl font-semibold" href={`/Detail/${film.id}`}>{film.title}</a>
@@ -154,7 +154,7 @@ const BerandaView = ({ ubahCari, hasilFilter }) => {
         <div className="flex overflow-x-scroll space-x-4">
           {upComingFilms.map((film) => (
             <div key={film.id} className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl">
-              <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} alt={film.title} className="max-w-sm rounded-lg shadow-2xl" />
+              <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} className="max-w-sm rounded-lg shadow-2xl" />
               <div className="p-4">
                 <a className="card-title" href={`/Detail/${film.id}`}>{film.title}</a>
               </div>

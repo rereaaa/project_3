@@ -1,5 +1,4 @@
-// store/filmSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const filmSlice = createSlice({
   name: 'film',
@@ -8,9 +7,9 @@ const filmSlice = createSlice({
     upComing: [],
     popular: [],
     topRated: [],
-    filmDetails: null,  
-    userRating: null,   
-    
+    filmDetails: null,
+    userRating: null,
+  },
   reducers: {
     setNowPlaying: (state, action) => {
       state.nowPlaying = action.payload;
@@ -32,6 +31,7 @@ const filmSlice = createSlice({
     },
   },
 });
+
 
 export const { setNowPlaying, setUpComing, setPopular, setTopRated, setFilmDetails, setUserRating } = filmSlice.actions;
 export default filmSlice.reducer;

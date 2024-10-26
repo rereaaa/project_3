@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPopular } from "../../store/filmSlice";
 
 const Popular = () => {
   const dispatch = useDispatch();
-  const [popularFilms, setPopularFilms] = useState([]);
+  const popularFilms = useSelector((state) => state.films.popular);
 
   useEffect(() => {
     const fetchPopularFilms = async () => {
@@ -16,7 +17,7 @@ const Popular = () => {
           },
         }
       );
-      dispatch(setPopularFilms(response.data.results));
+      dispatch(setPopular(response.data.results));
     };
 
     fetchPopularFilms();
@@ -34,22 +35,14 @@ const Popular = () => {
         </div>
       </div>
       <div className="grid grid-cols-3">
-        {popularFilms.map((film) => (
-          <div
-            key={film.id}
-            className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl"
-          >
-            <img
-              src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
-              alt={film.title}
-            />
-            <div className="p-4">
-              <a className="card-title" href={`/detail/${film.id}`}>
-                {film.title}
-              </a>
+      {popularFilms.map((film) => (
+            <div key={film.id} className="card bg-whitesmoke dark:bg-slate-950 dark:text-white w-96 shadow-xl">
+              <img src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} alt={film.title} className="max-w-sm rounded-lg shadow-2xl" />
+              <div className="p-4">
+                <a className="text-xl font-semibold" href={`/Detail/${film.id}`}>{film.title}</a>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

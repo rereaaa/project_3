@@ -1,17 +1,17 @@
-import { configureStore,  } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./reducer/themeReducer";
 import langReducer from "./reducer/langReducer";
 import userReducer from "./reducer/userReducer";
-import filmReducer from "./filmSlice"
-// import detailReducer from "./reducer/detailReducer";
+import filmReducer from "./filmSlice";
+// import ratedFilmsReducer from "./ratedFilmsSlice";
 
 const store = configureStore({
   reducer: {
     theme: themeReducer,
     lang: langReducer,
     user: userReducer,
-    films: filmReducer, 
-    // detail: detailReducer, 
+    films: filmReducer,
+    // ratedFilms: ratedFilmsReducer,
   },
 });
 

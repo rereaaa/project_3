@@ -83,7 +83,7 @@ const Navbar = () => {
                 </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">tonton xv</a>
+          <a className="btn btn-ghost text-xl text-center">tonton xv</a>
         </div>
         <div className="navbar hidden lg:flex dark:bg-slate-950 dark:text-white">
           <ul className="menu menu-horizontal px-1">
@@ -91,11 +91,15 @@ const Navbar = () => {
               <Link to={"/"}>Beranda</Link>
             </li>
             <li>
-              <details>
-                <summary>Categori</summary>
-                <ul className="p-2">
+                <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className="btn m-1">
+                Categori
+            </div>
+                <ul 
+                tabIndex={0}
+              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                   <li>
-                    <Link to="/Popular">Popular</Link>
+                    <button to="/Popular">Popular</button>
                   </li>
                   <li>
                     <Link to="/">Now Playing</Link>
@@ -107,7 +111,7 @@ const Navbar = () => {
                     <Link to="/">Top Rated</Link>
                   </li>
                 </ul>
-              </details>
+                </div>
             </li>
             <li>
               <Link to={"/RatedFilms"}>Rated Films</Link>
