@@ -7,7 +7,7 @@ import Footer from "./assets/component/Footer";
 import TemaContext from "./context/TemaContext";
 import { Provider } from "react-redux";
 import store from "./store/store";
-// import RatedFilms from "./assets/pages/RatedFilms";
+import RatedFilms from "./assets/pages/RatedFilms";
 import Detail from "./assets/pages/Detail";
 import Popular from "./assets/pages/Popular";
 import Upcoming from "./assets/pages/Upcoming";
@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Beranda />} />
               <Route path="/Detail/:id" element={<Detail />} />
-              {/* <Route path="/RatedFilms" element={<RatedFilms />} /> */}
+              <Route path="/RatedFilms" element={<RatedFilms />} />
               <Route path="/Popular" element={<Popular />} />
               <Route path="/Upcoming" element={<Upcoming />} />  
               <Route path="/Movie" element={<Movie />}/>
